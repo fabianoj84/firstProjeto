@@ -12,6 +12,7 @@ body {
   background-color: #1a1924;
   font-size: 1.6rem;
   color: white;
+  overflow: hidden;
 }
 
 body * {
@@ -23,9 +24,11 @@ body * {
 
   height: 100vh;
   width: 100vw;
+  max-width: 500px;
 
   display: grid;
-  grid-template-rows: 1fr 70% 1fr;
+  grid-template-rows: max-content 1fr max-content;
+  margin: auto;
 }
 
 #top {
@@ -84,7 +87,17 @@ body * {
   line-height: 1.4rem;
 }
 
+#messages {
+  overflow-y: scroll;
+  padding-bottom: 2.4rem;
+}
+
+#messages::-webkit-scrollbar{
+  display: none;
+}
+
 .message .body {
+  width: fit-content;
   margin-top: 1rem;
   background-color: #633bbc;
   padding: 1.4rem;
@@ -92,7 +105,7 @@ body * {
 }
 
 .message:not(.you) {
-  width: 60vw;
+  width: 40vw;
 }
 
 .message.you {
@@ -118,6 +131,12 @@ body * {
 
 .input-wrapper input {
   flex: 1;
+  outline: none;
+  color: white;
+}
+
+.input-wrapper:focus-within {
+  outline: 2px solid white;
 }
 
 .input-wrapper input::placeholder {
